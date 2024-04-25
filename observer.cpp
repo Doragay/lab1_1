@@ -1,6 +1,6 @@
 
 #include "observer.h"
-
+#include "notifier.h"
 
 Observer::Observer()
 {
