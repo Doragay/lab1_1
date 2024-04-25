@@ -3,6 +3,7 @@
 #include <file.h>
 #include <vector>
 #include <QObject>
+#include <QFileInfo>
 
 class Observer:public QObject
 {
@@ -13,8 +14,13 @@ public:
     Observer();
     void add_file(std::string _path);
     void files_info();//вызываей функцию когда хотим узнать инфо о файлах
+    void monitor();
 signals:
     void print_files_info(std::vector<std::string> &info); //создаем веткор типа данныз строка.Амперсант не копировал, а на прямую предавало
+    void fileExist(const std::string path, int size);
+    void fileNotExist(const std::string path);
+    void fileChanged(const std::string path, int size);
 };
+
 
 #endif // OBSERVER_H
