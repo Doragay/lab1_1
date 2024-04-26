@@ -4,32 +4,31 @@
 
 Observer::Observer()
 {
-    //connect(this, &Observer::print_files_info, &Notifier::print_files_info);
 }
 
-void Observer::add_file(std::string _path) //этафункция принадлежит этому классу. Определ для функции класса
+void Observer::add_file(std::string _path)
 {
     File file(_path);//создали объект класса файл
-        files.push_back(file);//добавили файл в наш массив, вектор
+        files.push_back(file);//добавили файл в наш вектор
 }
-void Observer::files_info()//собирает данные и отправляет в функцию
+void Observer::files_info()
 {
     std::vector<std::string> info;//складываем строки с полной информацией
     for (int i=0;i<files.size();i++) //проходимся по всем файлам
     {   //собираем данные для вывода
-        std::string exist = files[i].get_exist() ? "exist" : "dosn't exist";//проверка на существование
-        info.push_back("File path: " + files[i].get_path() +" exists. File size: " + std::to_string(files[i].get_size()) +" Exist:"+exist);//добавляем в вектор инфу
+        std::string exist = files[i].get_exist() ? "exist" : "dosn't exist";/
+        info.push_back("File path: " + files[i].get_path() + " File size: " + std::to_string(files[i].get_size()) + "Exist:" + exist);//добавляем в вектор инфу
     }
 
    print_files_info(info);
 }
-void Observer::monitor()//оператор расширения видимости
+void Observer::monitor()
 {
    for(int i = 0;i<files.size();i++){
-        QFileInfo checkFile(QString::fromStdString (files[i].get_path()));//обращется к реальному файлу
+        QFileInfo checkFile(QString::fromStdString (files[i].get_path()));
 
-        //проверям изменился ли файл или изменилось ли его наличие
-        if((files[i].get_exist()) && (!checkFile.exists())){ // если файл существовал, а потом перестал. сравниваем значения
+
+        if((files[i].get_exist()) && (!checkFile.exists())){ // если файл существовал, а потом перестал
             files[i].set_exist(false);//обновляем данные
             files[i].set_size(0);
 

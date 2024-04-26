@@ -3,21 +3,20 @@
 #include <string>
 
 class File
-//путь, существоавание и размер
 {
 private:
     std::string path;
-    float size;//разобраться с типом
+    float size;
     bool exist;
 
 public:
-    float get_size();//функция возвращает значения типа
+    //геттеры применяются для чтения переменной
+    float get_size();
     bool get_exist();
     std::string get_path();
     File(std::string _path);
-
-    // с помощью этого мы будем изменять значения, потому что напрямую делать не можем. Ничего не возвращают, просто меняют
-    void set_exist(const bool _exist); //нельзя менять
+//сеттеры для записи переменной
+    void set_exist(bool _exist);
     void set_size(float _size);
 };
 

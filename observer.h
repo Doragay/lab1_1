@@ -9,18 +9,17 @@ class Observer:public QObject
 {
     Q_OBJECT
 private:
-    std::vector<File> files; //создаем список этих объектов, массив файлов за которыми мы будем следить
+    std::vector<File> files; //определяем вектор файлов, за которыми мы будем следить
 public:
     Observer();
     void add_file(std::string _path);
-    void files_info();//вызываей функцию когда хотим узнать инфо о файлах
+    void files_info();
     void monitor();
 signals:
-    void print_files_info(std::vector<std::string> &info); //создаем веткор типа данныз строка.Амперсант не копировал, а на прямую предавало
+    void print_files_info(std::vector<std::string> &info); //определяем вектор типа данныз строка
     void fileExist(const std::string path, int size);
     void fileNotExist(const std::string path);
     void fileChanged(const std::string path, int size);
 };
-
 
 #endif // OBSERVER_H

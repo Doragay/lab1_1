@@ -3,15 +3,14 @@
 #include <string>
 #include <QString>
 
-File::File(std::string _path) //сигнатура создали путь
+File::File(std::string _path)
 {
-    QFileInfo fileInfo(QString::fromStdString(_path));//создается объект, который обращается к реальному файлу. вызвалии конструктор с параметром
-    path = _path; //создаем файлы внутри пас, ложим то что извне задаем
-    size = fileInfo.size();//функция, получаем размер реального пути
-    exist = fileInfo.exists(); //будет лежать размер реального файла
+    QFileInfo fileInfo(QString::fromStdString(_path));//создается объект, который обращается к реальному файлу
+    path = _path;
+    size = fileInfo.size();//получаем размер реального файла
+    exist = fileInfo.exists();
 }
-
-float File::get_size() //определ функции именно из этого класса. Возвращает
+float File::get_size()
 {
     return size;
 }
@@ -23,7 +22,7 @@ std::string File::get_path()
 {
     return path;
 }
-void File::set_exist(const bool _exist) //нужно отправить изменения. Меняет
+void File::set_exist(const bool _exist)
 {
     exist=_exist;
 }
