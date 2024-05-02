@@ -10,14 +10,11 @@ private:
     bool exist;
 
 public:
-    //геттеры применяются для чтения переменной
+    File(std::string _path);
     float get_size();
     bool get_exist();
     std::string get_path();
-    File(std::string _path);
-//сеттеры для записи переменной
-    void set_exist(bool _exist);
-    void set_size(float _size);
+    void update();
 };
 
 #endif // FILE_H
